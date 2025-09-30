@@ -1,1 +1,46 @@
-# SNS-LAMBDA-SQS
+# SNS-Lambda-SQL ⚙️
+
+This project shows how to connect a simple **web page** to an **AWS SNS FIFO Topic** using **Lambda** and **API Gateway**. 
+It’s a lightweight setup to publish messages directly from the browser into SNS.
+
+## Files
+1) **lambda_function.py** → Lambda backend 
+  - Serves the HTML page on **GET**  
+  - Publishes messages to SNS FIFO on **POST**
+    
+2) **index.html** → Frontend  
+  - Input field and button to send messages  
+  -JavaScript `fetch()` to POST messages to Lambda
+
+## 📂 Project Structure
+sns-lambda-sql/
+│── lambda_function.py # Backend -Lambda handler
+│── index.html # Frontend -HTML page
+│── README.md # Documentation
+
+## How It Works
+1. User opens the API Gateway URL → sees `index.html`.  
+2. Enters a message and clicks **Send**.  
+3. The frontend calls Lambda (POST).  
+4. Lambda publishes the message to **SNS FIFO Topic** with `MessageGroupId` and `MessageDeduplicationId`.  
+5. Response is shown on the web page and message is available in SNS subscribers.  
+
+## Setup
+1. Create an **SNS FIFO Topic** in AWS.  
+2. Deploy **lambda_function.py** to a Lambda function.  
+3. Give Lambda `sns:Publish` permission for your topic.  
+4. Connect Lambda to **API Gateway** (enable CORS).  
+5. Open the endpoint in a browser and start sending messages!  
+
+## Example
+- Input: `Hello SNS!`  
+- Frontend Response: `Message sent: Hello SNS!`  
+- SNS Topic Message: stored in order with FIFO guarantees.  
+
+## Stack
+- AWS Lambda  
+- Amazon SNS (FIFO)
+- API Gateway  
+- HTML + JavaScript  
+
+Simple, serverless, and ready to try !
