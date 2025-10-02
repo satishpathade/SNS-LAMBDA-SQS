@@ -21,7 +21,7 @@ A fast, minimal setup to push browser messages straight to SNS.
 
 ## Setup
 1. Create an **SNS FIFO Topic** in AWS.  
-2. Deploy **[lambda_function.py](lambda_function.py)** to a Lambda function.  
+2. Deploy **[sns_to_sqs_handler.py](sns_to_sqs_handler.py)** to a Lambda function.  
 3. Give Lambda `sns:Publish` permission for your topic.  
 4. Connect Lambda to **API Gateway** (enable CORS).  
 5. Open the endpoint in a browser and start sending messages!  
