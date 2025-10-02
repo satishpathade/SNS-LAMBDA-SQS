@@ -4,7 +4,7 @@ This project shows how to connect a simple **web page** to an **AWS SNS FIFO Top
 A fast, minimal setup to push browser messages straight to SNS.
 
 ## Project Structure
-1) **[lambda_function.py](lambda_function.py)** → Lambda backend
+1) **[sns_to_sqs_handler.py](sns_to_sqs_handler.py)** → Lambda backend
   - Serves the HTML page on **GET**  
   - Publishes messages to SNS FIFO on **POST**
     
